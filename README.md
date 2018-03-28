@@ -17,6 +17,16 @@ showPageNumber | Show/Hide Page numbers | optional (default true)
 @updateResource | A custom event with filtered payload as a parameter | -
 @resourceError | A custom event with resource error payload | -
 
+### Usage
+`
+<Paginator 
+  :resource = "rawData" 
+  :perPage="3" 
+  :showPageNumbers=true
+  @updateResource="updateResource"
+/>
+`
+
 ### To Do
 - [x] Props validation
 - [ ] Better error handling
