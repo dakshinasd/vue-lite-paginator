@@ -11,12 +11,14 @@ A lite weight VueJS paginator
 Name | Description | Remarks
 ---- | ----------- | --------
 :resource | An array of items to be filtered | required
-:perPage | How many items should be displayed per page | required
+:perPage | How many items should be displayed per page | required (default is 3)
 :classes | Classes you want to add to the outside wrapper | optional
+showPageNumber | Show/Hide Page numbers | optional (default true)
 @updateResource | A custom event with filtered payload as a parameter | -
 @resourceError | A custom event with resource error payload | -
 
 ### To Do
+- [x] Props validation
 - [ ] Better error handling
 - [ ] CSS class binding for all the elements
 - [ ] On demand elements show/hide
