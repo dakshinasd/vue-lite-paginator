@@ -1,16 +1,16 @@
 <template>
-  <div class="paginator" v-bind:class="classes" v-if="resource.length > 0">
-      <div class="show-page-numbers" v-if="showPageNumbers">
+  <div class="vl-paginator" v-bind:class="classes.container" v-if="resource.length > 0">
+      <div class="vl-show-page-numbers" v-if="showPageNumbers" v-bind:class="classes.pageNoContainer">
           Page {{currentPage}} of {{totalPages}}
       </div>
-      <button v-on:click="prev" class="pg-prev">Prev</button>
-      <button v-on:click="next" class="pg-next">Next</button>
+      <button v-on:click="prev" class="vl-pg-prev" v-bind:class="classes.prev">Prev</button>
+      <button v-on:click="next" class="vl-pg-next" v-bind:class="classes.next">Next</button>
   </div>
 </template>
 
 <script>
 export default {
-    name: "paginator",
+    name: "vl-paginator",
     data() {
         return {
             currentPage: 1,
@@ -27,7 +27,15 @@ export default {
             required: true
         },
         classes: {
-            type: String
+            type: Object,
+            default() {
+                return {
+                    container: "", 
+                    next: "", 
+                    prev: "", 
+                    pageo: ""
+                }
+            }
         },
         showPageNumbers: {
             type: Boolean,
@@ -74,6 +82,7 @@ export default {
     },
     mounted() {
        this.filter();
+       console.log(this.classes)
     },
     computed: {
         totalPages() {
