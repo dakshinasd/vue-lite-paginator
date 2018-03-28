@@ -1,6 +1,8 @@
 <template>
   <div class="paginator" v-bind:class="classes" v-if="resource.length > 0">
-      Page {{currentPage}} of {{totalPages}}
+      <div class="show-page-numbers" v-if="showPageNumbers">
+          Page {{currentPage}} of {{totalPages}}
+      </div>
       <button v-on:click="prev" class="pg-prev">Prev</button>
       <button v-on:click="next" class="pg-next">Next</button>
   </div>
@@ -8,14 +10,30 @@
 
 <script>
 export default {
-    name : 'paginator',
-    data () {
+    name: "paginator",
+    data() {
         return {
-            currentPage : 1,
-            filteredResource : []
+            currentPage: 1,
+            filteredResource: []
         }
     },
-    props : ['perPage', 'resource', 'classes'],
+    props: {
+        perPage: {
+            type: Number,
+            default: 3
+        },
+        resource: {
+            type: Array,
+            required: true
+        },
+        classes: {
+            type: String
+        },
+        showPageNumbers: {
+            type: Boolean,
+            default: true
+        }
+    },
     methods : {
         filter() {
             if ( typeof(this.resource) != "undefined" && this.resource.length > 0 ) {
@@ -34,9 +52,8 @@ export default {
             }
         },
 
-        next(){
-            
-            if(this.currentPage < this.totalPages){
+        next() {
+            if (this.currentPage < this.totalPages) {
                 this.currentPage ++;
                 this.filter()
             }
@@ -45,8 +62,8 @@ export default {
             }
         },
 
-        prev(){
-            if(this.currentPage > 1){
+        prev() {
+            if (this.currentPage > 1) {
                 this.currentPage --;
                 this.filter();
             }
@@ -55,34 +72,26 @@ export default {
             }
         }
     },
-    mounted(){
+    mounted() {
        this.filter();
     },
-    computed : {
-        totalPages () {
-            if( typeof(this.resource) != "undefined" && this.resource.length > 0 ){
+    computed: {
+        totalPages() {
+            if (typeof this.resource != "undefined" && this.resource.length > 0 ) {
                 return Math.ceil((this.resource.length / this.perPage));
             }
-            else{
+            else {
                 return 1;
             }
         }
     },
-    watch : {
-        resource(){
+    watch: {
+        resource() {
             this.currentPage = 1;
             this.filter();
         }
     }
 }
 </script>
-
-<style scoped>
-    .paginator{
-        background-color: #333;
-        color: #fff;
-        padding: 10px;
-    }
-</style>
 
 
