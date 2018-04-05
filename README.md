@@ -31,9 +31,15 @@ showPageNumber | Show/Hide Page numbers | optional (default true)
 ```
 <Paginator 
   :resource = "rawData" 
-  :perPage="3" 
-  :showPageNumbers=true
-  @updateResource="updateResource"
+  :perPage = "3" 
+  :showPageNumbers = true
+  :classes = {
+    container: "", //container class
+    next: "", // next buttn class
+    prev: "", // prev button class
+    pageNoContainer: "" // page number container class
+  }
+  @updateResource = "updateResource"
 />
 ```
 
