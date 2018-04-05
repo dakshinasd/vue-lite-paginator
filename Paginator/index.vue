@@ -33,7 +33,7 @@ export default {
                     container: "", 
                     next: "", 
                     prev: "", 
-                    pageNoContainer: ""
+                    pageo: ""
                 }
             }
         },
@@ -82,7 +82,6 @@ export default {
     },
     mounted() {
        this.filter();
-       console.log(this.classes)
     },
     computed: {
         totalPages() {
