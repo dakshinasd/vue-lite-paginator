@@ -33,7 +33,7 @@ export default {
                     container: "", 
                     next: "", 
                     prev: "", 
-                    pageo: ""
+                    pageNoContainer: ""
                 }
             }
         },
