@@ -12,25 +12,35 @@ Name | Description | Remarks
 ---- | ----------- | --------
 :resource | An array of items to be filtered | required
 :perPage | How many items should be displayed per page | required (default is 3)
-:classes | Classes you want to add to the outside wrapper | optional
+:classes | Classes you want to add to the outside wrapper (See Classes Section)| optional
 showPageNumber | Show/Hide Page numbers | optional (default true)
 @updateResource | A custom event with filtered payload as a parameter | -
 @resourceError | A custom event with resource error payload | -
 
+### Classes
+```
+{
+  container: "", //container class
+  next: "", // next buttn class
+  prev: "", // prev button class
+  pageNoContainer: "" // page number container class
+}
+```
+
 ### Usage
-`
+```
 <Paginator 
   :resource = "rawData" 
   :perPage="3" 
   :showPageNumbers=true
   @updateResource="updateResource"
 />
-`
+```
 
 ### To Do
 - [x] Props validation
 - [ ] Better error handling
-- [ ] CSS class binding for all the elements
+- [x] CSS class binding for all the elements
 - [ ] On demand elements show/hide
 - [ ] Better documentation
 - [ ] NPM Package and bundle as a VusJS plugin
